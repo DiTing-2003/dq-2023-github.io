@@ -12,12 +12,18 @@ export interface PortfolioItem {
   year: string
 }
 
+export interface HeroBackground {
+  type: 'image' | 'video'
+  url: string
+}
+
 export interface SiteConfig {
   name: string
   description: string
   email: string
   phone: string
   location: string
+  heroBackground?: HeroBackground
 }
 
 export const siteConfig: SiteConfig = {
@@ -26,6 +32,10 @@ export const siteConfig: SiteConfig = {
   email: 'dq20231216@163.com',
   phone: '18239866359',
   location: '地址',
+  heroBackground: {
+    type: 'image',
+    url: 'https://dq20231216-1326435468.cos.ap-beijing.myqcloud.com/AI/%E8%83%8C%E6%99%AF.jpg',
+  },
 }
 
 export const portfolioItems: PortfolioItem[] = [
@@ -34,7 +44,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: '作品标题 1',
     category: 'commercial',
     description: '作品描述内容，这是一段商业剪辑作品。',
-    videoUrl: '视频1地址',
+    videoUrl: 'https://dq20231216-1326435468.cos.ap-beijing.myqcloud.com/AI/%E8%A7%86%E9%A2%9102.mp4',
     videoType: 'direct',
     thumbnail: '/dq-2023-github.io/placeholder-1.jpg',
     tags: ['商业', '剪辑'],
