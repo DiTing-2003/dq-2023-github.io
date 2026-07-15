@@ -26,6 +26,48 @@ export interface SiteConfig {
   heroBackground?: HeroBackground
 }
 
+/* ─── Design Tokens (Inspired by RunwayML) ───
+   Color comes from visual content, not the interface.
+   The UI is intentionally invisible — minimal borders, zero shadows.
+*/
+export const designTokens = {
+  colors: {
+    black: '#000000',
+    deepBlack: '#030303',
+    darkSurface: '#1a1a1a',
+    pureWhite: '#ffffff',
+    charcoal: '#404040',
+    coolSlate: '#767d88',
+    midSlate: '#7d848e',
+    mutedGray: '#a7a7a7',
+    borderDark: '#27272a',
+    coolSilver: '#c9ccd1',
+    gold: '#d4a853',
+  },
+  typography: {
+    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+    displaySize: '48px',
+    sectionHeading: '40px',
+    cardTitle: '24px',
+    bodySize: '16px',
+    captionSize: '14px',
+    microSize: '11px',
+    tightLineHeight: '1.0',
+    bodyLineHeight: '1.3',
+    negativeTracking: '-1.2px',
+  },
+  spacing: {
+    section: '80px',
+    component: '24px',
+    gap: '16px',
+  },
+  radius: {
+    subtle: '4px',
+    comfortable: '8px',
+    generous: '16px',
+  },
+} as const
+
 export const siteConfig: SiteConfig = {
   name: '狄婷婷',
   description: '专业剪辑师 | 视频后期制作',

@@ -3,13 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #0f0f0f;
-  --bg-secondary: #1a1a1a;
-  --bg-card: #1f1f1f;
-  --text-primary: #f5f5f5;
-  --text-secondary: #a3a3a3;
-  --accent-gold: #f59e0b;
-  --accent-gold-hover: #d97706;
+  /* ─── RunwayML-inspired Design Tokens ─── */
+  --black: #000000;
+  --deep-black: #030303;
+  --dark-surface: #1a1a1a;
+  --pure-white: #ffffff;
+  --charcoal: #404040;
+  --cool-slate: #767d88;
+  --mid-slate: #7d848e;
+  --muted-gray: #a7a7a7;
+  --border-dark: #27272a;
+  --cool-silver: #c9ccd1;
+  --gold: #d4a853;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 * {
@@ -23,43 +30,39 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  font-family: var(--font-sans);
+  background-color: var(--black);
+  color: var(--pure-white);
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: var(--border-dark);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--cool-slate);
 }
 
 ::selection {
-  background-color: var(--accent-gold);
-  color: #0f0f0f;
+  background-color: var(--gold);
+  color: var(--black);
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 .animate-fadeIn {

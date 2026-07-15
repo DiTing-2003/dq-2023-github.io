@@ -1,75 +1,66 @@
 import { Link } from 'react-router-dom'
-import { Film, Mail, Phone, MapPin } from 'lucide-react'
 import { siteConfig } from '@/data/portfolio'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-white/5 bg-[#0a0a0a]">
+    <footer className="border-t border-brand-border bg-brand-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Film className="w-5 h-5 text-[#f59e0b]" />
-              <span className="text-white font-semibold">{siteConfig.name}</span>
-            </div>
-            <p className="text-[#a3a3a3] text-sm leading-relaxed">
-              专业视频剪辑与后期制作，用镜头讲述每一个精彩故事。
+            <p className="text-white font-medium mb-3 tracking-tight">{siteConfig.name}</p>
+            <p className="text-brand-slate text-sm leading-relaxed">
+              专业视频剪辑与后期制作
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-medium mb-4">快速链接</h4>
+            <p className="text-[11px] uppercase tracking-[0.15em] text-brand-muted mb-4 font-medium">导航</p>
             <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-[#a3a3a3] text-sm hover:text-[#f59e0b] transition-colors">
-                  首页
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-[#a3a3a3] text-sm hover:text-[#f59e0b] transition-colors">
-                  简历
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-[#a3a3a3] text-sm hover:text-[#f59e0b] transition-colors">
-                  联系
-                </Link>
-              </li>
+              {[
+                { to: '/', label: '首页' },
+                { to: '/about', label: '简历' },
+                { to: '/contact', label: '联系' },
+              ].map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="text-brand-slate text-sm hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-white font-medium mb-4">联系方式</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-[#a3a3a3] text-sm">
-                <Mail className="w-4 h-4 text-[#f59e0b]" />
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-[#f59e0b] transition-colors">
+            <p className="text-[11px] uppercase tracking-[0.15em] text-brand-muted mb-4 font-medium">联系方式</p>
+            <ul className="space-y-2">
+              <li>
+                <a href={`mailto:${siteConfig.email}`} className="text-brand-slate text-sm hover:text-white transition-colors">
                   {siteConfig.email}
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-[#a3a3a3] text-sm">
-                <Phone className="w-4 h-4 text-[#f59e0b]" />
-                <a href={`tel:${siteConfig.phone}`} className="hover:text-[#f59e0b] transition-colors">
+              <li>
+                <a href={`tel:${siteConfig.phone}`} className="text-brand-slate text-sm hover:text-white transition-colors">
                   {siteConfig.phone}
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-[#a3a3a3] text-sm">
-                <MapPin className="w-4 h-4 text-[#f59e0b]" />
-                <span>{siteConfig.location}</span>
+              <li className="text-brand-slate text-sm">
+                {siteConfig.location}
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-white/5 pt-8 text-center">
-          <p className="text-[#a3a3a3] text-sm">
-            &copy; {currentYear} {siteConfig.name}. All rights reserved.
+        <div className="border-t border-brand-border pt-8 text-center">
+          <p className="text-brand-muted text-xs">
+            &copy; {currentYear} {siteConfig.name}
           </p>
         </div>
       </div>

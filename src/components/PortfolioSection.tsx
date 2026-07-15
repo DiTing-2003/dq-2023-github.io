@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { cn } from '@/lib/utils'
 import { portfolioItems, categories, type PortfolioItem } from '@/data/portfolio'
 import PortfolioCard from './PortfolioCard'
 import VideoModal from './VideoModal'
@@ -16,26 +15,26 @@ export default function PortfolioSection() {
   return (
     <section id="portfolio" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
-      <div className="text-center mb-12">
-        <span className="text-[#f59e0b] text-sm font-medium uppercase tracking-widest">作品集</span>
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mt-3 mb-4">精选作品</h2>
-        <p className="text-[#a3a3a3] max-w-xl mx-auto">
-          点击作品卡片查看视频演示
+      <div className="mb-12">
+        <p className="text-[11px] uppercase tracking-[0.2em] text-brand-slate font-medium mb-3">
+          作品
         </p>
+        <h2 className="text-3xl sm:text-4xl font-medium text-white leading-tight tracking-[-0.5px]">
+          精选作品
+        </h2>
       </div>
 
       {/* Category Filter */}
-      <div className="flex flex-wrap justify-center gap-3 mb-12">
+      <div className="flex flex-wrap gap-1.5 mb-12">
         {categories.map((cat) => (
           <button
             key={cat.key}
             onClick={() => setActiveCategory(cat.key)}
-            className={cn(
-              'px-5 py-2.5 text-sm font-medium rounded-xl transition-all duration-300',
+            className={`px-3 py-1.5 text-xs uppercase tracking-[0.08em] rounded-sm transition-all duration-200 ${
               activeCategory === cat.key
-                ? 'bg-[#f59e0b] text-black shadow-lg shadow-[#f59e0b]/20'
-                : 'bg-white/5 text-[#a3a3a3] hover:text-white hover:bg-white/10 border border-white/5'
-            )}
+                ? 'bg-white text-black'
+                : 'text-brand-slate border border-brand-border hover:text-white hover:border-white/30'
+            }`}
           >
             {cat.label}
           </button>
@@ -44,7 +43,7 @@ export default function PortfolioSection() {
 
       {/* Portfolio Grid */}
       {filteredItems.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredItems.map((item) => (
             <PortfolioCard
               key={item.id}
@@ -54,17 +53,13 @@ export default function PortfolioSection() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-16">
-          <p className="text-[#a3a3a3]">该分类暂无作品</p>
+        <div className="py-16 text-center">
+          <p className="text-brand-slate text-sm">该分类暂无作品</p>
         </div>
       )}
 
-      {/* Video Modal */}
       {selectedItem && (
-        <VideoModal
-          item={selectedItem}
-          onClose={() => setSelectedItem(null)}
-        />
+        <VideoModal item={selectedItem} onClose={() => setSelectedItem(null)} />
       )}
     </section>
   )

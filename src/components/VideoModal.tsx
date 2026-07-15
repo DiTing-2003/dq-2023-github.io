@@ -12,9 +12,7 @@ export default function VideoModal({ item, onClose }: VideoModalProps) {
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
-    return () => {
-      document.body.style.overflow = ''
-    }
+    return () => { document.body.style.overflow = '' }
   }, [])
 
   useEffect(() => {
@@ -31,30 +29,30 @@ export default function VideoModal({ item, onClose }: VideoModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fadeIn"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 backdrop-blur-sm animate-fadeIn"
       onClick={handleBackdropClick}
     >
       <div className="relative w-full max-w-5xl mx-4">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute -top-12 right-0 text-white/60 hover:text-white transition-colors p-2 group"
-          aria-label="Close modal"
+          className="absolute -top-10 right-0 text-brand-muted hover:text-white transition-colors"
+          aria-label="Close"
         >
-          <X className="w-6 h-6 group-hover:scale-110 transition-transform" />
+          <X className="w-5 h-5" />
         </button>
 
-        {/* Video Title */}
-        <h3 className="text-white text-lg font-semibold mb-4">{item.title}</h3>
+        <h3 className="text-white text-lg font-medium mb-3 leading-tight">
+          {item.title}
+        </h3>
 
-        {/* Video Player */}
         {item.videoType === 'direct' ? (
-          <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative bg-black overflow-hidden rounded-sm">
             <video
               ref={videoRef}
               controls
               autoPlay
-              className="w-full aspect-video rounded-2xl"
+              className="w-full aspect-video"
               controlsList="nodownload"
             >
               <source src={item.videoUrl} type="video/mp4" />
@@ -62,24 +60,20 @@ export default function VideoModal({ item, onClose }: VideoModalProps) {
             </video>
           </div>
         ) : (
-          <div className="aspect-video bg-[#1a1a1a] rounded-2xl flex items-center justify-center shadow-2xl">
-            <p className="text-[#a3a3a3]">
-              视频类型：{item.videoType} | 视频地址：{item.videoUrl}
+          <div className="aspect-video bg-brand-deep rounded-sm flex items-center justify-center">
+            <p className="text-brand-slate text-sm">
+              视频类型：{item.videoType}
             </p>
           </div>
         )}
 
-        {/* Video Info */}
         <div className="mt-4 flex flex-wrap gap-2">
           {item.tags.map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 text-sm bg-white/10 text-[#a3a3a3] rounded-full"
-            >
+            <span key={tag} className="px-2 py-0.5 text-xs text-brand-slate border border-brand-border rounded-sm">
               {tag}
             </span>
           ))}
-          <span className="px-3 py-1 text-sm bg-white/10 text-[#a3a3a3] rounded-full">
+          <span className="px-2 py-0.5 text-xs text-brand-slate border border-brand-border rounded-sm">
             {item.year}
           </span>
         </div>
